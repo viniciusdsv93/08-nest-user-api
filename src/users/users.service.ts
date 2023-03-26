@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { createUserDto } from './dto/create.user.dto';
+import { createUserDto } from './dto/create-user.dto';
 import { userModel } from './models/user.model';
 
 let users = [];
