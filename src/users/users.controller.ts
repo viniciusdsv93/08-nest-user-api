@@ -1,19 +1,27 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { createUserDto } from './dto/create.user.dto';
-import { userModel } from './models/user.model';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
+import { createUserDto } from './dto/create-user.dto';
+import { userModel } from './entities/user.entity';
 import { UsersService } from './users.service';
 
-@Controller("/users")
+@Controller('/users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) { }
+  constructor(private readonly usersService: UsersService) {}
 
   @Get()
   getAllUsers() {
     return this.usersService.getAllUsers();
   }
 
-  @Get("/:id")
-  getUser(@Param("id") id: string) {
+  @Get('/:id')
+  getUser(@Param('id') id: string) {
     return this.usersService.getUser(id);
   }
 
@@ -22,13 +30,13 @@ export class UsersController {
     return this.usersService.insertUser(user);
   }
 
-  @Delete("/:id")
-  deleteUser(@Param("id") id: string) {
+  @Delete('/:id')
+  deleteUser(@Param('id') id: string) {
     return this.usersService.deleteUser(id);
   }
 
-  @Put("/:id")
-  updateUser(@Param("id") id: string, @Body() user: createUserDto) {
+  @Put('/:id')
+  updateUser(@Param('id') id: string, @Body() user: createUserDto) {
     return this.usersService.updateUser(id, user);
   }
 }
